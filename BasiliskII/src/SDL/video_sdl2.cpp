@@ -761,7 +761,7 @@ static SDL_Surface * init_sdl_video(int width, int height, int bpp, Uint32 flags
 	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, PrefsFindBool("scale_nearest") ? "nearest" : "linear");
 	
 	const char *render_driver = PrefsFindString("sdlrender");
-	if (!strcmp(render_driver, "metal")) window_flags |= SDL_WINDOW_METAL;
+	if (render_driver != NULL && !strcmp(render_driver, "metal")) window_flags |= SDL_WINDOW_METAL;
 
 	if (!sdl_window) {
 		int m = get_mag_rate();
